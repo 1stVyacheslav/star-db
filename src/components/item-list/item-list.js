@@ -6,6 +6,6 @@ export default class ItemList extends Component {
 
 
 	render() {
-		return <div></div>
+		return <div>Some text</div>
 	}
 };
