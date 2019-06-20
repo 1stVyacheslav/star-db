@@ -20,19 +20,18 @@ export default class App extends Component {
 		return (
 			<div className='container'>
 				<Header />
-				<div className='container'>
-					<div className='row'>
-						<RandomPlanet />
+				<RandomPlanet />
+				
+					
+				<div className='row'>
+					<div className='col-5'>
+						<ItemList />
 					</div>
-					<div className='row'>
-						<div className='col-5'>
-							<ItemList />
-						</div>
-						<div className='col-7'>
-							<PersonDetails />
-						</div>					
-					</div>
-				</div>				
+					<div className='col-7'>
+						<PersonDetails />
+					</div>					
+				</div>
+								
 			</div>
 		)
 	}

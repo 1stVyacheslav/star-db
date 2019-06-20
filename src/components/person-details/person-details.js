@@ -3,7 +3,11 @@ import React from 'react';
 import './person-details.css';
 
 const PersonDetails = () => {
-	return <div>Some text</div>
+	return (
+	<div className='person-details'>
+		Some text
+	</div>
+	)
 };
 
 export default PersonDetails;
