@@ -19,17 +19,13 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className='container'>
+				
 				<Header />
 				<RandomPlanet />
-				
-					
-				<div className='row'>
-					<div className='col-5'>
-						<ItemList />
-					</div>
-					<div className='col-7'>
-						<PersonDetails />
-					</div>					
+
+				<div className='row'>					
+					<ItemList />					
+					<PersonDetails />										
 				</div>
 								
 			</div>
