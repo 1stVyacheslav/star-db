@@ -4,14 +4,20 @@ import './header.css';
 
 const Header = () => {
 	return (
-	<nav className='navbar navbar-expand'>
+	<nav className='header navbar navbar-expand'>
+		
 		<div className='navbar-brand'>Star-DB</div>
-		<ul className=' navbar-nav'>
-			<li className='nav-item nav-link active'>People</li>
-			<li className='nav-item nav-link'>Planets</li>
-			<li className='nav-item nav-link'>Starships</li>
-		</ul>
-
+		<div className='nav-item active'>
+			<button className="nav-link btn btn-link">People</button> 
+		</div>
+		<div className='nav-item'>
+			<button className="nav-link btn btn-link">Planets</button> 
+		</div>
+		<div className='nav-item'>
+			<button className="nav-link btn btn-link">Starships</button> 
+		</div>
+		
+		
 	</nav>)
 };
 
