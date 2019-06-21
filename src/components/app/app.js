@@ -23,9 +23,15 @@ export default class App extends Component {
 				<Header />
 				<RandomPlanet />
 
-				<div className='row'>					
-					<ItemList />					
-					<PersonDetails />										
+				<div className='row'>
+					<div className='col-md-5 mb-md-0 mb-3'>
+						<ItemList />
+					</div>
+					
+					<div className='col-md-7 mt-md-0 mt-3'>
+						<PersonDetails />	
+					</div>			
+														
 				</div>
 								
 			</div>

@@ -7,13 +7,13 @@ export default class ItemList extends Component {
 
 	render() {
 		return (
-			<div className='item-list col-md-5'>
-				<ul className='list-group '>
+			
+				<ul className='list-group item-list'>
 					<li className='list-group-item'>Luke Skywalker</li>
 					<li className='list-group-item'>Darth Vader</li>
 					<li className='list-group-item'>R2-D2</li>
 				</ul>
-			</div>
+		
 		)
 	}
 };
