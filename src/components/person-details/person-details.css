@@ -4,10 +4,15 @@
 
 .person-image {
 	width: 150px;
+	height: 100%;
 	margin-right: 1rem;
 	border-radius: 10px;
 }
 
 .person-details .list-group-item {
 	padding: 0.5rem;
+}
+
+.message-text {
+	color: #c78f22;
 }
