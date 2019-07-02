@@ -38,7 +38,7 @@ export default class App extends Component {
 					</div>
 					
 					<div className='col-md-7 mt-md-0 mt-3'>
-						<PersonDetails />	
+						<PersonDetails personId={this.state.selectedItemId} />	
 					</div>			
 														
 				</div>
