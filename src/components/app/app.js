@@ -29,6 +29,8 @@ export default class App extends Component {
 				<RandomPlanet />
 
 				<PersonPage />
+				<PersonPage />
+				<PersonPage />
 								
 			</div>
 		)
