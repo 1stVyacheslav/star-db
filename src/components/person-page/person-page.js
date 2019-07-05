@@ -3,6 +3,7 @@ import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import ErrorMessage from '../error-message';
 import SwapiService from '../../services/swapi-service';
+import Row from '../row'
 
 import './person-page.css';
 
@@ -30,38 +31,34 @@ export default class PersonPage extends Component {
 			return <ErrorMessage />
 		}
 
-		return (
-			<div className='row mb-3'>
-				<div className='col-md-5 mb-md-0 mb-3'>
-					<ItemList 
-						onSelectItem={this.selectItem}
-						getData={this.swapiService.getAllPeople}
-						renderItem={ ( {name, birthYear} ) => <span>{name} ({birthYear})</span> }
-					/>
-				</div>
-					
-				<div className='col-md-7 mt-md-0 mt-3'>
-					<PersonDetails personId={this.state.selectedItemId} />
-					<ErrorButton />
-				</div>		
-														
-			</div>
-		)
+		const itemList = <ItemList 
+												onSelectItem={this.selectItem}
+												getData={this.swapiService.getAllPeople}
+												renderItem={ ( {name, birthYear} ) => <span>{name} ({birthYear})</span> }
+											/>;
+
+		const personDetails = <PersonDetails personId={this.state.selectedItemId} />
+
+		return <Row 
+							left={itemList} 
+							right={personDetails}
+						/>
 	}
 }
 
-class ErrorButton extends Component {
+// class ErrorButton extends Component {
 
-	state = {
-		error: false
-	}
+// 	state = {
+// 		error: false
+// 	}
 
-	render() {
+// 	render() {
 
-		if (this.state.error) {
-			this.foo.bar = 0;
-		}
-		return (
-		<div className='btn btn-danger' onClick={() => this.setState({error: true})}>Throw Error</div>
-	)}
-}
+// 		if (this.state.error) {
+// 			this.foo.bar = 0;
+// 		}
+// 		return (
+// 		<div className='btn btn-danger' onClick={() => this.setState({error: true})}>Throw Error</div>
+// 	)}
+// }
+
