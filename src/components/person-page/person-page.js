@@ -12,7 +12,7 @@ export default class PersonPage extends Component {
 	swapiService = new SwapiService()
 
 	state = {
-		selectedItemId: 3,
+		selectedItemId: null,
 		hasError: false
 	}
 
@@ -31,11 +31,13 @@ export default class PersonPage extends Component {
 		}
 
 		return (
-			<div className='row'>
+			<div className='row mb-3'>
 				<div className='col-md-5 mb-md-0 mb-3'>
 					<ItemList 
-					onSelectItem={this.selectItem}
-					getData={this.swapiService.getAllPeople} />
+						onSelectItem={this.selectItem}
+						getData={this.swapiService.getAllPeople}
+						renderItem={ ( {name, birthYear} ) => <span>{name} ({birthYear})</span> }
+					/>
 				</div>
 					
 				<div className='col-md-7 mt-md-0 mt-3'>
