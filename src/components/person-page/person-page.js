@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import ItemDetails, {Record} from '../item-details';
 import ErrorMessage from '../error-message';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row'
@@ -37,11 +37,19 @@ export default class PersonPage extends Component {
 												renderItem={ ( {name, birthYear} ) => <span>{name} ({birthYear})</span> }
 											/>;
 
-		const personDetails = <PersonDetails personId={this.state.selectedItemId} />
+		const itemDetails = <ItemDetails 
+														personId={this.state.selectedItemId}
+														getImageData={this.swapiService.getPersonImageURL}
+														getData={this.swapiService.getPerson} >
+
+													<Record  label={"Gender"} itemDetail={'gender'} content/>
+													<Record label={"Birth Year"} itemDetail={'birthYear'} content/>
+													<Record label={"Eye Color"} itemDetail={'eyeColor'} content/>
+												</ItemDetails>
 
 		return <Row 
 							left={itemList} 
-							right={personDetails}
+							right={itemDetails}
 						/>
 	}
 }
