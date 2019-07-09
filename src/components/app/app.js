@@ -8,10 +8,6 @@ import './app.css';
 
 export default class App extends Component {
 
-	state = {
-		selectedItemId: null
-	}
-
 	render() {
 		return (
 			<div className='container'>

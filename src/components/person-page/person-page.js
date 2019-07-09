@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemList from '../item-list';
-import ItemDetails, {Record} from '../item-details';
+import ItemDetails from '../item-details';
 import ErrorMessage from '../error-message';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row'
@@ -39,13 +39,7 @@ export default class PersonPage extends Component {
 
 		const itemDetails = <ItemDetails 
 														personId={this.state.selectedItemId}
-														getImageData={this.swapiService.getPersonImageURL}
-														getData={this.swapiService.getPerson} >
-
-													<Record  label={"Gender"} itemDetail={'gender'} content/>
-													<Record label={"Birth Year"} itemDetail={'birthYear'} content/>
-													<Record label={"Eye Color"} itemDetail={'eyeColor'} content/>
-												</ItemDetails>
+														getData={this.swapiService.getPerson} />
 
 		return <Row 
 							left={itemList} 
@@ -53,20 +47,3 @@ export default class PersonPage extends Component {
 						/>
 	}
 }
-
-// class ErrorButton extends Component {
-
-// 	state = {
-// 		error: false
-// 	}
-
-// 	render() {
-
-// 		if (this.state.error) {
-// 			this.foo.bar = 0;
-// 		}
-// 		return (
-// 		<div className='btn btn-danger' onClick={() => this.setState({error: true})}>Throw Error</div>
-// 	)}
-// }
-

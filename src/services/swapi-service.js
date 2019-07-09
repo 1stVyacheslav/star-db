@@ -43,13 +43,6 @@ export default class SwapiService {
 		return this._transformStarship(starship);
 	}
 
-	getPersonImageURL = (id) => {
-	
-		const personImageURL = `${this._imageBase}/characters/${id}.jpg`;
-		console.log(personImageURL);
-		return personImageURL;
-	}
-
 	_extractId(item) {
 		const idRegExp = /\/([0-9]*)\/$/;
 		const id = item.url.match(idRegExp)[1];
@@ -58,8 +51,12 @@ export default class SwapiService {
 
 	_transformPlanet = (planet) => {
 
+		const planetId = this._extractId(planet),
+					imageUrl = `${this._imageBase}/planets/${planetId}.jpg`;
+
 		return {
-			id: this._extractId(planet),
+			id: planetId,
+			image: imageUrl,		
 			name: planet.name,
 			population: planet.population,
 			rotationPeriod: planet.rotation_period,
@@ -68,9 +65,13 @@ export default class SwapiService {
 	}
 
 	_transformPerson = (person) => {
+
+		const personId = this._extractId(person),
+					imageUrl = `${this._imageBase}/characters/${personId}.jpg`;
 	
 		return {
-			id: this._extractId(person),
+			id: personId,
+			image: imageUrl,
 			name: person.name,
 			gender: person.gender,
 			birthYear: person.birth_year,
@@ -79,8 +80,13 @@ export default class SwapiService {
 	}
 
 	_transformStarship = (starship) => {
+
+		const starshipId = this._extractId(starship),
+					imageUrl = `${this._imageBase}/characters/${starshipId}.jpg`;
+
 		return {
-			id: this._extractId(starship),
+			id: starshipId,
+			image: imageUrl,
 			name: starship.name
 		}
 	}
