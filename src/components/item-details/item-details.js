@@ -22,15 +22,15 @@ export default class ItemDetails extends Component {
 
 	updatePerson = () => {
 
-		if (!this.props.personId) {
+		if (!this.props.itemId) {
 			return;
 		}
 
-		const { personId, getData} = this.props;
+		const { itemId, getData} = this.props;
 
 		this.setState( {loading: true })
 		
-		getData( personId )
+		getData( itemId )
 							.then( (item) => {								
 								this.setState({ 
 									item: item,
@@ -42,29 +42,30 @@ export default class ItemDetails extends Component {
 	render() {
 		
 		const { item, loading } = this.state;
+		const { children: renderItems } = this.props;
+		
+		const records = React.Children.map( renderItems, (child) => {
+			return React.cloneElement( child, {item} );
+		} )
 
 		const message = (!item && !loading) ? <Message /> : null;
 		const spinner = loading ? <Spinner /> : null;
-		const content = (!loading && !!item) ? 
-											<Details item={ item }>
-												<Record item ={item} field={'gender'} label={'Gender'}/>
-												<Record item ={item} field={'birthYear'} label={'Birth Year'}/>
-												<Record item ={item} field={'eyeColor'} label={'Eye Color'}/>
-											</Details> : null;
+		const details = (!loading && !!item) ? 
+											<Details item={item} records={ records } /> : null;
 
 		return (
 			
 				<div className='item-details card d-flex flex-row'>
 					{message}
 					{spinner}
-					{content}	
+					{details}	
 				</div>		
 	
 		)
 	};
 };
 
-const Details = ( {item, itemImage, children} ) => {
+const Details = ( {item, records} ) => {
 
 	const { image, name } = item;
 	
@@ -75,7 +76,7 @@ const Details = ( {item, itemImage, children} ) => {
 			<div className='card-body'>
 				<h4 className='card-title'>{name}</h4>
 				<ul className='list-group list-group-flush'>
-					{children}
+					{records}
 				</ul>
 			</div>
 		</React.Fragment>
@@ -95,4 +96,5 @@ const Message = () => {
 	return <span className='message-text'>Please, select item!</span>
 }
 
-// export {Record};
+export {Record};
+

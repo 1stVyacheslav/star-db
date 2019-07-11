@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import ItemList from '../item-list';
-import ItemDetails from '../item-details';
+import ItemDetails, {Record} from '../item-details';
 import ErrorMessage from '../error-message';
 import SwapiService from '../../services/swapi-service';
-import Row from '../row'
-
-import './person-page.css';
+import Row from '../row';
 
 
-export default class PersonPage extends Component {
+import './item-page.css';
+
+
+export default class ItemPage extends Component {
 
 	swapiService = new SwapiService()
 
 	state = {
-		selectedItemId: null,
+		selectedItemId: 3,
 		hasError: false
 	}
 
@@ -34,12 +35,17 @@ export default class PersonPage extends Component {
 		const itemList = <ItemList 
 												onSelectItem={this.selectItem}
 												getData={this.swapiService.getAllPeople}
-												renderItem={ ( {name, birthYear} ) => <span>{name} ({birthYear})</span> }
-											/>;
+												renderItem={ ( {name, birthYear} ) => <span>{name} ({birthYear})</span> } />;
 
 		const itemDetails = <ItemDetails 
-														personId={this.state.selectedItemId}
-														getData={this.swapiService.getPerson} />
+														itemId={this.state.selectedItemId}
+														getData={this.swapiService.getPerson}>
+
+													<Record field={'gender'} label={'Gender'}/>
+													<Record field={'birthYear'} label={'Birth Year'}/>
+													<Record field={'eyeColor'} label={'Eye Color'}/>
+
+												</ItemDetails>
 
 		return <Row 
 							left={itemList} 
