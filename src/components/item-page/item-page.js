@@ -5,6 +5,15 @@ import ErrorMessage from '../error-message';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
 
+import {
+	PersonList,
+	PlanetList,
+	StarshipList,
+	PersonDetails,
+	PlanetDetails,
+	StarshipDetails
+} from '../sw-components/';
+
 
 import './item-page.css';
 
@@ -32,10 +41,9 @@ export default class ItemPage extends Component {
 			return <ErrorMessage />
 		}
 
-		const itemList = <ItemList 
-												onSelectItem={this.selectItem}
-												getData={this.swapiService.getAllPeople}
-												renderItem={ ( {name, birthYear} ) => <span>{name} ({birthYear})</span> } />;
+		const itemList = 	<PersonList onSelectItem={this.selectItem}>
+												{ ( {name} ) => <span> {name} </span> }
+											</PersonList>;
 
 		const itemDetails = <ItemDetails 
 														itemId={this.state.selectedItemId}

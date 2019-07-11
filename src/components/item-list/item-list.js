@@ -2,6 +2,7 @@ import React from 'react';
 import withData from '../hoc';
 
 import './item-list.css';
+import SwapiService from '../../services/swapi-service';
 
 const ItemList = ( {renderItems, itemList} ) => {	
 
@@ -14,5 +15,4 @@ const ItemList = ( {renderItems, itemList} ) => {
 	)
 }
 
-
-export default withData(ItemList);
+export default ItemList;

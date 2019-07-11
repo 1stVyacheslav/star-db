@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Spinner from '../spinner';
 
-function withData(Element) {
+function withData(Element, getData) {
 
 	return class extends Component {
 
@@ -10,18 +10,19 @@ function withData(Element) {
 		}
 	
 		componentDidMount() {
-	
-			const { getData } = this.props;
-	
+		
 			getData()
 							.then( (itemList) => this.setState( {itemList} ) )
 							.catch( (err) => console.log(err))
 		}
 	
 		renderItems = (arr) => {
+
+			const { children: renderItem } = this.props;
+
 			return arr.map( ( item ) => {
 				const { id } = item,
-							label = this.props.renderItem(item);
+							label = renderItem(item);
 				
 				const {onSelectItem} = this.props;
 				return <li className='list-group-item' key={id} onClick={() => onSelectItem(id)}>{label}</li>
