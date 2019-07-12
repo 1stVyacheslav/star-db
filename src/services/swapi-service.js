@@ -82,12 +82,15 @@ export default class SwapiService {
 	_transformStarship = (starship) => {
 
 		const starshipId = this._extractId(starship),
-					imageUrl = `${this._imageBase}/characters/${starshipId}.jpg`;
+					imageUrl = `${this._imageBase}/starships/${starshipId}.jpg`;
 
 		return {
 			id: starshipId,
 			image: imageUrl,
-			name: starship.name
+			name: starship.name,
+			model: starship.model,
+			length: starship.length,
+			cost: starship.cost_in_credits
 		}
 	}
 }

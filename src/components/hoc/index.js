@@ -1,3 +1,3 @@
-import withData from './with-data';
+import {withData, updateItemData, withChildFunc, withChildren} from './with-data';
 
-export default withData;
+export  {withData, updateItemData, withChildFunc, withChildren};
