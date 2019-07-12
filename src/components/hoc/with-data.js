@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Spinner from '../spinner';
 
-function withData(Element, getData) {
+const withData = (Element, getData) => {
 
 	return class extends Component {
 
@@ -15,20 +15,6 @@ function withData(Element, getData) {
 							.then( (itemList) => this.setState( {itemList} ) )
 							.catch( (err) => console.log(err))
 		}
-	
-		renderItems = (arr) => {
-
-			const { children: renderItem } = this.props;
-
-			return arr.map( ( item ) => {
-				const { id } = item,
-							label = renderItem(item);
-				
-				const {onSelectItem} = this.props;
-				return <li className='list-group-item' key={id} onClick={() => onSelectItem(id)}>{label}</li>
-				
-			} );		
-		}
 
 		render() {
 
@@ -38,7 +24,7 @@ function withData(Element, getData) {
 				return <Spinner />
 			}
 
-			return <Element itemList={itemList} renderItems={this.renderItems}/>;
+			return <Element {...this.props} itemList={itemList} />;
 		}
 	}
 }

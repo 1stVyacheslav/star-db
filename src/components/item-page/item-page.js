@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ItemList from '../item-list';
+// import ItemList from '../item-list';
 import ItemDetails, {Record} from '../item-details';
 import ErrorMessage from '../error-message';
 import SwapiService from '../../services/swapi-service';
@@ -7,11 +7,11 @@ import Row from '../row';
 
 import {
 	PersonList,
-	PlanetList,
-	StarshipList,
-	PersonDetails,
-	PlanetDetails,
-	StarshipDetails
+	// PlanetList,
+	// StarshipList,
+	// PersonDetails,
+	// PlanetDetails,
+	// StarshipDetails
 } from '../sw-components/';
 
 
@@ -41,9 +41,8 @@ export default class ItemPage extends Component {
 			return <ErrorMessage />
 		}
 
-		const itemList = 	<PersonList onSelectItem={this.selectItem}>
-												{ ( {name} ) => <span> {name} </span> }
-											</PersonList>;
+		const itemList = 	<PersonList onSelectItem={this.selectItem} />
+											
 
 		const itemDetails = <ItemDetails 
 														itemId={this.state.selectedItemId}
