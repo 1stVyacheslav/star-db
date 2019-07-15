@@ -101,4 +101,8 @@ const PlanetView = ( {planet} ) => {
 	);
 }
 
-export default addContext(RandomPlanet);
+const mapMethodsToProps = (swapiService) => {
+	return	{swapiService: swapiService}
+}
+
+export default addContext(RandomPlanet, mapMethodsToProps);
