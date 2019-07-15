@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ErrorMessage from '../error-message';
-import SwapiService from '../../services/swapi-service';
 import Row from '../row';
 import {
 	PersonList,
