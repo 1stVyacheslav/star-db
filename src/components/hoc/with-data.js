@@ -29,7 +29,7 @@ const withData = (Element) => {
 	}
 }
 
-const updateItemData = (Item, getData) => {
+const updateItemData = (Item) => {
 	return class extends Component {
 
 		state = {
@@ -57,7 +57,7 @@ const updateItemData = (Item, getData) => {
 	
 			this.setState( {loading: true })
 			
-			getData( itemId )
+			this.props.getData( itemId )
 								.then( (item) => {								
 									this.setState({ 
 										data: item,

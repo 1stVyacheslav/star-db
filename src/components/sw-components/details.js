@@ -1,15 +1,6 @@
 import React from 'react';
-import SwapiService from '../../services/swapi-service';
 import ItemDetails, {Record} from '../item-details';
-import {updateItemData, withChildren} from '../hoc';
-
-const swapiService = new SwapiService();
-
-const {
-	getPerson,
-	getPlanet,
-	getStarship
-} = swapiService;
+import {updateItemData, withChildren, addContext} from '../hoc';
 
 const childrenArrPersons = [
 	<Record field={'gender'} label={'Gender'}/>,
@@ -26,20 +17,38 @@ const childrenArrStarships = [
 	<Record field={'length'} label={'Length'}/>,
 	<Record field={'cost'} label={'Cost'}/>]
 
-const PersonDetails = updateItemData(
-	withChildren(
-		ItemDetails, childrenArrPersons
-	), getPerson)
+const mapPersonMethodGetData = (swapiService) => {
+	return { getData: swapiService.getPerson }
+}
 
-const PlanetDetails = updateItemData(
-	withChildren(
-		ItemDetails, childrenArrPlanets
-	), getPlanet)
+const mapPlanetMethodGetData = (swapiService) => {
+	return { getData: swapiService.getPlanet }
+}
 
-const StarshipDetails = updateItemData(
-	withChildren(
-		ItemDetails, childrenArrStarships
-		), getStarship)
+const mapStarshipMethodGetData = (swapiService) => {
+	return { getData: swapiService.getStarship }
+}
+
+const PersonDetails = addContext(
+	updateItemData(
+		withChildren(
+			ItemDetails, childrenArrPersons
+		)
+	), mapPersonMethodGetData)
+
+const PlanetDetails = addContext(
+	updateItemData(
+		withChildren(
+			ItemDetails, childrenArrPlanets
+		)
+	), mapPlanetMethodGetData)
+
+const StarshipDetails = addContext(
+	updateItemData(
+		withChildren(
+			ItemDetails, childrenArrStarships
+		)
+	), mapStarshipMethodGetData)
 
 export {
 	PersonDetails,
