@@ -1,3 +1,9 @@
-import ItemPage from './item-page';
+import PeoplePage from './people-page';
+import PlanetPage from './planet-page';
+import StarshipPage from './starship-page';
 
-export default ItemPage;
+export {
+	PeoplePage,
+	PlanetPage,
+	StarshipPage
+};

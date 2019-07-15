@@ -3,16 +3,12 @@ import ErrorMessage from '../error-message';
 import Row from '../row';
 import {
 	PersonList,
-	PlanetList,
-	StarshipList,
-	PersonDetails,
-	PlanetDetails,
-	StarshipDetails
-} from '../sw-components/';
+	PersonDetails
+} from '../sw-components';
 
 import './item-page.css';
 
-export default class ItemPage extends Component {
+export default class PeoplePage extends Component {
 
 	state = {
 		selectedItemId: null,
