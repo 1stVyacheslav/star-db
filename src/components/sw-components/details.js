@@ -38,7 +38,7 @@ const PlanetDetails = updateItemData(
 
 const StarshipDetails = updateItemData(
 	withChildren(
-		ItemDetails, ...childrenArrStarships
+		ItemDetails, childrenArrStarships
 		), getStarship)
 
 export {

@@ -15,8 +15,6 @@ import './item-page.css';
 
 export default class ItemPage extends Component {
 
-	swapiService = new SwapiService()
-
 	state = {
 		selectedItemId: null,
 		hasError: false

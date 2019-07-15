@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 import ErrorMessage from '../error-message';
+import { addContext } from '../hoc';
 
 import './random-planet.css';
 
-export default class RandomPlanet extends Component {
-
-	swapiService = new SwapiService();
+ class RandomPlanet extends Component {
 
 	state = {
 		planet: {},
@@ -41,7 +39,8 @@ export default class RandomPlanet extends Component {
 
 	updatePlanet = () => {
 		const id = Math.floor(Math.random()*25) + 1;
-		this.swapiService
+		// this.swapiService
+		this.props.swapiService
 				.getPlanet(id)
 				.then( this.onPlanetLoaded)
 				.catch(this.onError);
@@ -101,3 +100,5 @@ const PlanetView = ( {planet} ) => {
 		</React.Fragment>
 	);
 }
+
+export default addContext(RandomPlanet);
