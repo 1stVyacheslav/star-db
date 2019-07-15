@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
 import ErrorMessage from '../error-message';
-import { addContext } from '../hoc';
+import { withContext } from '../hoc';
 
 import './random-planet.css';
 
@@ -105,4 +105,4 @@ const mapMethodsToProps = (swapiService) => {
 	return	{swapiService: swapiService}
 }
 
-export default addContext(RandomPlanet, mapMethodsToProps);
+export default withContext(RandomPlanet, mapMethodsToProps);

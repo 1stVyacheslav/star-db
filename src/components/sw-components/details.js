@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemDetails, {Record} from '../item-details';
-import {updateItemData, withChildren, addContext} from '../hoc';
+import {updateItemData, withChildren, withContext} from '../hoc';
 
 const childrenArrPersons = [
 	<Record field={'gender'} label={'Gender'}/>,
@@ -29,21 +29,21 @@ const mapStarshipMethodGetData = (swapiService) => {
 	return { getData: swapiService.getStarship }
 }
 
-const PersonDetails = addContext(
+const PersonDetails = withContext(
 	updateItemData(
 		withChildren(
 			ItemDetails, childrenArrPersons
 		)
 	), mapPersonMethodGetData)
 
-const PlanetDetails = addContext(
+const PlanetDetails = withContext(
 	updateItemData(
 		withChildren(
 			ItemDetails, childrenArrPlanets
 		)
 	), mapPlanetMethodGetData)
 
-const StarshipDetails = addContext(
+const StarshipDetails = withContext(
 	updateItemData(
 		withChildren(
 			ItemDetails, childrenArrStarships
