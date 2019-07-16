@@ -7,7 +7,7 @@ const Header = () => {
 	return (
 	<nav className='header navbar navbar-expand'>
 		
-		<div className='navbar-brand'>Star-DB</div>
+		<Link to='/' className='navbar-brand'>Star-DB</Link>
 		<div className='nav-item active'>
 			<Link to='/people' className="nav-link btn btn-link">People</Link> 
 		</div>
