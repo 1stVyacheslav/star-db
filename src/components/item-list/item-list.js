@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 // import withData from '../hoc';
 
 import './item-list.css';
@@ -25,6 +26,10 @@ const ItemList = ( props ) => {
 		</ul>
 
 	)
+}
+
+ItemList.propTypes = {
+	itemList: PropTypes.arrayOf(PropTypes.object).isRequired //обязательное свойство
 }
 
 export default ItemList;

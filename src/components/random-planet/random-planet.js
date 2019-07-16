@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Spinner from '../spinner';
 import ErrorMessage from '../error-message';
 import { withContext } from '../hoc';
@@ -13,17 +15,9 @@ import './random-planet.css';
 	}
 
 	//Проверка типа props
-	static typeProps = { //объект свойство: функция-проверка (props, свойство, компонент)
-		updateInterval: (props, propsName, componentName) => {
-		const value = props[propsName];
-
-		if ( typeof value === 'number' && !isNaN(value) ) {
-			// возвращает null если, свойство нужного типа
-			return null
-		}
-		// ВОЗВРАЩАЕТ ошибку если, свойство не предусмотренного кодом типа
-		return new TypeError(`${componentName}: ${propsName} must be a number!`)
-	}}
+	static propTypes = { //объект свойство: функция-проверка (props, свойство, компонент)
+		updateInterval: PropTypes.number
+	}
 
 	state = {
 		planet: {},
