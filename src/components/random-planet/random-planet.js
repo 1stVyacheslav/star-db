@@ -7,6 +7,24 @@ import './random-planet.css';
 
  class RandomPlanet extends Component {
 
+	//Установка значений props по умолчанию
+	static defaultProps = {
+		updateInterval: 10000
+	}
+
+	//Проверка типа props
+	static typeProps = { //объект свойство: функция-проверка (props, свойство, компонент)
+		updateInterval: (props, propsName, componentName) => {
+		const value = props[propsName];
+
+		if ( typeof value === 'number' && !isNaN(value) ) {
+			// возвращает null если, свойство нужного типа
+			return null
+		}
+		// ВОЗВРАЩАЕТ ошибку если, свойство не предусмотренного кодом типа
+		return new TypeError(`${componentName}: ${propsName} must be a number!`)
+	}}
+
 	state = {
 		planet: {},
 		loading: true,
@@ -14,8 +32,11 @@ import './random-planet.css';
 	}
 
 	componentDidMount() {
+
+		const updateInterval = this.props.updateInterval;
+
 		this.updatePlanet();
-		// this.interval = setInterval(this.updatePlanet, 10000);
+		this.interval = setInterval(this.updatePlanet, updateInterval);
 	}
 
 	componentWillUnmount() {
@@ -39,7 +60,7 @@ import './random-planet.css';
 
 	updatePlanet = () => {
 		const id = Math.floor(Math.random()*25) + 1;
-		// this.swapiService
+		
 		this.props.swapiService
 				.getPlanet(id)
 				.then( this.onPlanetLoaded)
@@ -105,4 +126,4 @@ const mapMethodsToProps = (swapiService) => {
 	return	{swapiService: swapiService}
 }
 
-export default withContext(RandomPlanet, mapMethodsToProps);
+export default withContext(mapMethodsToProps)(RandomPlanet);

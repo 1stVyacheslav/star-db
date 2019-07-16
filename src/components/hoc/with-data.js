@@ -90,21 +90,27 @@ const updateItemData = (Item) => {
 	}
 }
 
-const withChildFunc = (Wrapper, fn) => {
-	return (props) => { 
-		return 	<Wrapper {...props} >		
-							{fn} 
-						</Wrapper>
-			}
+const withChildFunc = (fn) => {
+	return (Wrapper) => {
+		return (props) => { 
+			return 	<Wrapper {...props} >		
+								{fn} 
+							</Wrapper>
+		}
+	}
+
 };
 
 
-const withChildren = (Wrapper, ...Children) => {
-	return (props) => {
-		return 	<Wrapper {...props}>
-							{Children}
-						</Wrapper>
+const withChildren = (...Children) => {
+	return (Wrapper) => {
+		return (props) => {
+			return 	<Wrapper {...props}>
+								{Children}
+							</Wrapper>
+		}
 	}
+
 }
 
 
