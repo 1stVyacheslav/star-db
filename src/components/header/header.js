@@ -17,6 +17,12 @@ const Header = () => {
 		<div className='nav-item'>
 			<Link to='/starship/' className="nav-link btn btn-link">Starships</Link> 
 		</div>
+		<div className='nav-item'>
+			<Link to='/login' className="nav-link btn btn-link">Login</Link> 
+		</div>
+		<div className='nav-item'>
+			<Link to='/secret' className="nav-link btn btn-link">Secret</Link> 
+		</div>
 		
 		
 	</nav>)
