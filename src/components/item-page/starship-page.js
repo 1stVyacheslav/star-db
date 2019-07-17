@@ -11,7 +11,6 @@ import './item-page.css';
 export default class StarshipPage extends Component {
 
 	state = {
-		selectedItemId: null,
 		hasError: false
 	}
 
@@ -20,10 +19,15 @@ export default class StarshipPage extends Component {
 	}
 
 	selectItem = (id) => {
-		this.setState({selectedItemId: id})
+		const { history } = this.props;
+
+		history.push(id);
 	}
 
 	render() {
+
+		const { id } = this.props.match.params;
+
 
 		if (this.state.hasError) {
 			return <ErrorMessage />
@@ -32,7 +36,7 @@ export default class StarshipPage extends Component {
 		return (
 				<Row 
 					left = {<StarshipList onSelectItem={this.selectItem} />	} 
-					right = {<StarshipDetails	itemId={this.state.selectedItemId} />}
+					right = {<StarshipDetails	itemId={ id } />}
 				/>
 		)
 	}

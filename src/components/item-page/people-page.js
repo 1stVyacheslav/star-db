@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { withRouter } from 'react-router-dom';
 
 import ErrorMessage from '../error-message';
 import { PersonList } from '../sw-components';
@@ -23,7 +22,7 @@ export default class PeoplePage extends Component {
 
 		const { history } = this.props;
 
-		history.push(`/people/${id}`)		
+		history.push(id)		
 		
 	}
 
@@ -38,6 +37,3 @@ export default class PeoplePage extends Component {
 		)
 	}
 }
-
-
-// export default withRouter(PeoplePage);

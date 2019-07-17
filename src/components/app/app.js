@@ -35,7 +35,7 @@ export default class App extends Component {
 										} } />
 
 						<Route path='/planet' component={PlanetPage} />
-						<Route path='/starship' component={StarshipPage} />
+						<Route path='/starship/:id?' component={StarshipPage} />
 
 					</Router>
 					
