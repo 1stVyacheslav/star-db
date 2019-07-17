@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 import ErrorMessage from '../error-message';
 import { PersonList } from '../sw-components';
 
 import './item-page.css';
 
-class PeoplePage extends Component {
+export default class PeoplePage extends Component {
 
 	state = {
 		selectedItemId: null,
@@ -18,7 +18,7 @@ class PeoplePage extends Component {
 	}
 
 	selectItem = (id) => {
-		
+
 		this.setState({selectedItemId: id})
 
 		const { history } = this.props;
@@ -40,4 +40,4 @@ class PeoplePage extends Component {
 }
 
 
-export default withRouter(PeoplePage);
+// export default withRouter(PeoplePage);
