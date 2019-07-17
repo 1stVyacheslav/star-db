@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 import ErrorMessage from '../error-message';
-import Row from '../row';
-import {
-	PersonList,
-	PersonDetails
-} from '../sw-components';
+import { PersonList } from '../sw-components';
 
 import './item-page.css';
 
-export default class PeoplePage extends Component {
+class PeoplePage extends Component {
 
 	state = {
 		selectedItemId: null,
@@ -20,7 +18,13 @@ export default class PeoplePage extends Component {
 	}
 
 	selectItem = (id) => {
+		
 		this.setState({selectedItemId: id})
+
+		const { history } = this.props;
+
+		history.push(`/people/${id}`)		
+		
 	}
 
 	render() {
@@ -30,10 +34,10 @@ export default class PeoplePage extends Component {
 		}
 
 		return (
-				<Row 
-					left = {<PersonList onSelectItem={this.selectItem} />	} 
-					right = {<PersonDetails	itemId={this.state.selectedItemId} />}
-				/>
+				<PersonList onSelectItem={ this.selectItem } />	
 		)
 	}
 }
+
+
+export default withRouter(PeoplePage);

@@ -4,10 +4,7 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import { PeoplePage,	PlanetPage,	StarshipPage } from '../item-page';
 import SwapiService, { SwapiProvider } from '../../services/';
-import {
-	PersonList,
-	PersonDetails
-} from '../sw-components';
+import { PersonDetails } from '../sw-components';
 
 import './app.css';
 
