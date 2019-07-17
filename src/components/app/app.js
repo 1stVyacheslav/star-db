@@ -4,6 +4,10 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import { PeoplePage,	PlanetPage,	StarshipPage } from '../item-page';
 import SwapiService, { SwapiProvider } from '../../services/';
+import {
+	PersonList,
+	PersonDetails
+} from '../sw-components';
 
 import './app.css';
 
@@ -23,8 +27,16 @@ export default class App extends Component {
 						<Header />
 						<RandomPlanet />
 
-						<Route path='/' render={ () => <h2>Welcom to StarDB</h2> } exact />
-						<Route path='/people' component={PeoplePage} />
+						<Route 	path='/' 
+										render={ () => <h2>Welcom to StarDB</h2> } 
+										exact />
+						<Route path='/people' exact component={PeoplePage} />
+						<Route 	path='/people/:id'
+										render={ ( {match} ) => {
+											const { id } = match.params;
+											return <PersonDetails itemId={id} />
+										} } />
+
 						<Route path='/planet' component={PlanetPage} />
 						<Route path='/starship' component={StarshipPage} />
 
