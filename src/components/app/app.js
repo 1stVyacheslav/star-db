@@ -14,7 +14,8 @@ export default class App extends Component {
 	swapiService = new SwapiService();
 
 	state = {
-		isLoggedIn: false
+		isLoggedIn: false,
+		page: '/'
 	}
 
 	onLogin = () => {
@@ -23,9 +24,20 @@ export default class App extends Component {
 		})
 	}
 
+	onChangePage = (e) => {
+		// console.log(e.target.href)
+		const text = e.target.href;
+		const textRegExp = /\/([a-z]*)\/$/;
+		// console.log(text.match(textRegExp));
+		const newPage = (text.match(textRegExp)) ? text.match(textRegExp)[1] : '/';
+		this.setState( () => {
+			return { ...this.state, page: newPage }
+		} )
+	}
+
 	render() {
 
-		const {isLoggedIn} = this.state;
+		const {isLoggedIn, page} = this.state;
 
 		return (
 			<div className='container'>
@@ -34,7 +46,7 @@ export default class App extends Component {
 
 					<Router>
 
-						<Header />
+						<Header page={page} onChangePage={this.onChangePage} />
 						<RandomPlanet />
 
 						<Switch> {/* отрисовывает только первый Route, который соответствует адресу */}
